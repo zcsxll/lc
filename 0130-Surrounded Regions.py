@@ -4,6 +4,8 @@ class Solution:
     def solve(self, board: List[List[str]]) -> None:
         """
         Do not return anything, modify board in-place instead.
+        遍历四边，遇到"O"，就深度搜索，把相邻的"O"替换为"-"。没有被替换的"O"就是需要被改成"X"的
+        遍历整个矩阵，把"O"改为"X"，把"-"改为"O"
         """
         
         if board == []:
