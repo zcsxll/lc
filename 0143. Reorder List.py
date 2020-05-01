@@ -19,6 +19,8 @@ class Solution:
         """
         Do not return anything, modify head in-place instead.
         """
+        if head is None:
+            return
         slow = head
         fast = head
         while fast is not None and fast.next is not None:
