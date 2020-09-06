@@ -5,15 +5,13 @@ class Solution:
     def maxCoins(self, nums: List[int]) -> int:
         nums = [1] + nums + [1]
         n = len(nums)
-        ret = np.zeros((n, n), dtype=np.int)
+        M = np.zeros((n, n), dtype=np.int)
 
-        for i in range(2, n):
-            for a in range(0, n-i):
-                for b in range(a+1, a + i):
-                    ret[a][a+i] = max(ret[a][a+i], ret[a][b] + ret[b][a+i] + nums[a] * nums[b] * nums[a+i])
-                # print(ret)
-            # print()
-        return ret[0][-1]
+        for k in range(2, n): #k=2时是计算戳破1个气球的最优解，k=3时事计算戳破2个连续的气球的最优解。。。
+            for a in range(0, n-k): #a是被戳破的连续K-1个气球的区间的左边，a+k是区间的右边
+                for i in range(a+1, a+k): #i就是上述分析中的i
+                    M[a][a+k] = max(M[a][a+k], M[a][i] + M[i][a+k] + nums[a] * nums[i] * nums[a+k])
+        return M[0][-1]
 
 if __name__ == '__main__':
     nums = [3, 1, 5, 8]
