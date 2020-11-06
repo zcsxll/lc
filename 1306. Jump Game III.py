@@ -6,7 +6,7 @@ class Solution:
         return self.zcs(arr, start, flag)
 
     def zcs(self, arr, start, flag):
-        print(start)
+        # print(start)
         if arr[start] == 0:
             return True
 
