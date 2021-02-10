@@ -21,7 +21,7 @@ class Solution:
     def check(self, word, start_idx, cnt, mem):
         if start_idx >= len(word):
             return cnt >= 2
-        if mem[start_idx] >= 0:
+        if mem[start_idx] >= 0: #说明从start_idx开始往后的判断已经做过了
             return mem[start_idx] > 0
 
         node = self.root
